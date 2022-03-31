@@ -16,7 +16,9 @@ and classi er networks (MICNet), is the first graph neural network model that 
 from the original heterogeneous multigraphs (Integration block), (2) Embedding the nodes across the layers using consecutive GNN-based architecture to predict the target (classification block). Experimental results against comparison methods demonstrate that our framework can achieve the best results in terms of classification accuracy. We evaluated our proposed framework from brain genomics superstruct project datasets (https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/25833).
 
 More details can be found at: (link to the paper) (https://www.researchgate.net/publication/359539534_Multigraph_Classification_using_Learnable_Integration_Network_with_Application_to_Gender_Fingerprinting).
-![MICNet pipeline](MICNet architecture.png)
+<p align="center">
+  <img src="./MICNet architecture.png">
+</p>
 
 # Libraries to preinstall in Python
 * [Python 3.8](https://www.python.org/)
@@ -49,7 +51,7 @@ integration methods (MGI (Our integartion block), Linear, Average, SNF and netNo
 outperforms all benchmark methods by achieving the highest accuracy rate for subpopulations (5 folds). On the other hand, if we replace the classi er with GCN and combine it with our integration, the resulting model outperforms all the other GCN-based models.
 
 # Python Code
-To run MICNet, first, generate a multi-view dataset with dimension shape `[num_Subs x num_ROIs x num_ROIs x num_Views]`. Next, use k-folds cross-validation to divide each dataset into training dataset and testing dataset. Then, train and test MICNet using the code named 'main_MGI_DIFF' above. To benchmark with the other models, use the codes entiteled 'main_netNorm_DIFF','main_SNF_DIFF', etc...
+To run MICNet, first, generate a multi-view dataset with dimension shape `[num_Subs x num_ROIs x num_ROIs x num_Views]`. Next, use k-folds cross-validation to divide each dataset into training dataset and testing dataset. Then, train and test MICNet using the code named 'main_MGI_DIFF' above. To benchmark with the other models, use the codes entiteled 'main_netNorm_DIFF', 'main_SNF_DIFF' , etc...
 
 # Example Result
 
