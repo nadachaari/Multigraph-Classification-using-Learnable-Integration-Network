@@ -18,12 +18,38 @@ from the original heterogeneous multigraphs (Integration block), (2) Embedding t
 More details can be found at: (link to the paper) (https://www.researchgate.net/publication/359539534_Multigraph_Classification_using_Learnable_Integration_Network_with_Application_to_Gender_Fingerprinting).
 
 
-, . Our framework consists of two main
-blocks. We design a multigraph integration block which is inspired from (Yun
-et al., 2019) to perform subject-level multigraph integration. This block ensures
-the fusion of the heterogeneous views within the same multigraph.
-Then, we inject the subject-level integrated graphs into a graph classi cation
-block based on several node embedding and pooling layers (Ying et al.,
-2018). This block performs sequential hierarchical node embeddings resulting
-in simpler graph representations as the network deepens to eventually output
-a class score.
+# Libraries to preinstall in Python
+* [Python 3.8](https://www.python.org/)
+* [PyTorch 1.4.0](http://pytorch.org/)
+* [Torch-geometric](https://github.com/rusty1s/pytorch_geometric)
+* [seaborn 0.11.2](https://pypi.org/project/seaborn/)
+* [sklearn 0.0](https://pypi.org/project/sklearn/)
+* [Matplotlib 3.1.3+](https://matplotlib.org/)
+* [Numpy 1.18.1+](https://numpy.org/)
+
+
+# Data format
+We run a connectomic dataset which consists of 308 human male subjects (M) and 391 human male subjects (F) from the Brain Genomics Superstruct Project (GSP) dataset (Holmes et al., [2015] ( https://www.nature.com/articles/sdata201531/fig_tab )). Each subject is represented by 4 cortical morphological brain networks derived from maximum principal curvature, mean cortical thickness, mean sulcal depth, and average curvature measurements. For each hemisphere, the cortical surface is reconstructed from T1-weighted MRI using FreeSurfer pipeline (Fischl et al., [2012] ( https://pubmed.ncbi.nlm.nih.gov/22248573/ ))and parcellated into 35 cortical regions of interest (ROIs) using Desikan-Killiany cortical atlas (Desikan et al., [2006] ( https://www.sciencedirect.com/science/article/pii/S1053811906000437?casa_token=_b-7Vr1dT9gAAAAA:5OoJBGcMy2AUtVzRGlHtxggoUjIwiMA5H_UFxxiV0ST4WckwB5Zbnv7RwYyO5INXqYnJ-v2S )). The corresponding connectivity strength between two ROIs is derived by computing the absolute difference in their average cortical attribute (e.g., thickness).
+
+Each subject of multi-view brain networks dataset can be represented as a stacked adjacency matrices with shape
+```
+[num_ROIs x num_ROIs x num_Views]
+```
+where `num_ROIs` is number of region of interests in the brain graph and `num_views` is number of cortical morphological brain networks, called also views (eg.cortical thickness).
+```
+[num_Subs x num_ROIs x num_ROIs x num_Views]
+```
+where num_sub is number of subjects in a dataset. 
+
+
+**Train and test MICNet**
+
+To evaluate our framework, we used 5-folds cross validation strategy. We evaluate 10 models constructed from the 10 possible combinations of the
+integration methods (MGI (Our integartion block), Linear, Average, SNF and netNorm) and classifiers (DIFF and GCN). Based on the accuracy, our MICNet
+outperforms all benchmark methods by achieving the highest accuracy rate for subpopulations (5 folds). On the other hand, if we replace the classi er with GCN and combine it with our integration, the resulting model outperforms all the other GCN-based models.
+
+# Python Code
+To run MICNet, first, generate a multi-view dataset with dimension shape `[num_Subs x num_ROIs x num_ROIs x num_Views]`. Next, use k-folds cross-validation to divide each dataset into training dataset and testing dataset. Then, train and test MICNet using the code named 'main_MGI_DIFF' above. To benchmark with the other models, use the codes entiteled 'main_netNorm_DIFF','main_SNF_DIFF', etc...
+
+# Please Cite the Following paper when using MICNet:
+
