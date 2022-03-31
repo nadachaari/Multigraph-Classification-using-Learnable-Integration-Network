@@ -13,7 +13,7 @@ us to grasp the salient graph features. We train, in end-to-end fashion, these t
 
 This work has been published in the Journal of Neural Networks, 2022. Our framework, named multigraph integration
 and classi er networks (MICNet), is the first graph neural network model that integrates and classifies multigraphs in an end-to-end fashion based on geometric deep learning architecture. Our learning-based framework comprises two key steps. (1) Learning to optimally construct single-view graphs
-from the original heterogeneous multigraphs (Integration block), (2) Embedding the nodes across the layers using consecutive GNN-based architecture to predict the target (classification block). Experimental results against comparison methods demonstrate that our framework can achieve the best results in terms of classification accuracy. We evaluated our proposed framework from brain genomics superstruct project datasets (https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/25833).
+from the original heterogeneous multigraphs (Integration block), (2) Embedding the nodes across the layers using consecutive GNN-based architecture to predict the target (Classification block). Experimental results against comparison methods demonstrate that our framework can achieve the best results in terms of classification accuracy. We evaluated our proposed framework from brain genomics superstruct project datasets (https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/25833).
 
 More details can be found at: (link to the paper) (https://www.researchgate.net/publication/359539534_Multigraph_Classification_using_Learnable_Integration_Network_with_Application_to_Gender_Fingerprinting).
 <p align="center">
