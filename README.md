@@ -16,7 +16,7 @@ and classi er networks (MICNet), is the first graph neural network model that 
 from the original heterogeneous multigraphs (Integration block), (2) Embedding the nodes across the layers using consecutive GNN-based architecture to predict the target (classification block). Experimental results against comparison methods demonstrate that our framework can achieve the best results in terms of classification accuracy. We evaluated our proposed framework from brain genomics superstruct project datasets (https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/25833).
 
 More details can be found at: (link to the paper) (https://www.researchgate.net/publication/359539534_Multigraph_Classification_using_Learnable_Integration_Network_with_Application_to_Gender_Fingerprinting).
-
+![MICNet pipeline](MICNet architecture.png)
 
 # Libraries to preinstall in Python
 * [Python 3.8](https://www.python.org/)
@@ -50,6 +50,14 @@ outperforms all benchmark methods by achieving the highest accuracy rate for sub
 
 # Python Code
 To run MICNet, first, generate a multi-view dataset with dimension shape `[num_Subs x num_ROIs x num_ROIs x num_Views]`. Next, use k-folds cross-validation to divide each dataset into training dataset and testing dataset. Then, train and test MICNet using the code named 'main_MGI_DIFF' above. To benchmark with the other models, use the codes entiteled 'main_netNorm_DIFF','main_SNF_DIFF', etc...
+
+# Example Result
+
+* The figure below demonstrates the classification accuracy distribution by our proposed method (MICNet) and benchmark methods for gender classi cation using right hemisphere cortical multigraphs. Our model MICNet is represented by our integration and our classifier (DIFF) networks. The benchmark methods used for comparison include different integration techniques and classifiers. The integration methods are: similarity network fusion technique (SNF) (Wang et al., 2014), normalization method (netNorm) (Dhifallah et al., 2020), simple average (average), weighted linear average (linear) and our deep integration network. The classifiers are graph convolutional networks (GCN) (Kipf and Welling, 2016) and the classi cation block (DIFF) that we integrated in our model.
+
+<p align="center">
+  <img src="./Classification accuracy.png">
+</p>
 
 # Please Cite the Following paper when using MICNet:
 
